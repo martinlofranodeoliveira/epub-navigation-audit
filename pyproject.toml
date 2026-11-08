@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools==84.2.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epub-navigation-audit"
+version = "1.0.0"
+description = "Auditoria local de sumário, ordem de leitura e referências em EPUB 3, sem renderizar conteúdo."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Contribuidores da LOFRANO TECNOLOGIA"}]
+keywords = ["epub", "navigation", "opf", "publishing", "audit", "python"]
+dependencies = ["defusedxml==0.7.1"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Text Processing :: Markup :: XML",
+]
+
+[project.optional-dependencies]
+dev = ["build==1.6.1", "setuptools==84.2.1"]
+
+[project.urls]
+Homepage = "https://lofranotecnologia.com.br"
+Repository = "https://github.com/martinlofranodeoliveira/epub-navigation-audit"
+Issues = "https://github.com/martinlofranodeoliveira/epub-navigation-audit/issues"
+Documentation = "https://github.com/martinlofranodeoliveira/epub-navigation-audit#readme"
+
+[project.scripts]
+epub-navigation-audit = "epub_navigation_audit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

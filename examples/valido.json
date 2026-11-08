@@ -1,0 +1,133 @@
+{
+  "archive": {
+    "bytes": 2101,
+    "entries": 6,
+    "read_bytes": 2230,
+    "selected_member_reads": 6,
+    "sha256": "f9654fba594c3b443fd5d1bcd78ab8a22dd253fa42a1d752c45def3ca87ed810"
+  },
+  "complete": true,
+  "documents": [
+    {
+      "complete": true,
+      "ids": 1,
+      "media_type": "application/xhtml+xml",
+      "path": "EPUB/nav.xhtml"
+    },
+    {
+      "complete": true,
+      "ids": 1,
+      "media_type": "application/xhtml+xml",
+      "path": "EPUB/text/caf\u00e9.xhtml"
+    },
+    {
+      "complete": true,
+      "ids": 2,
+      "media_type": "application/xhtml+xml",
+      "path": "EPUB/text/inicio.xhtml"
+    }
+  ],
+  "filename": "valido.epub",
+  "issues": [],
+  "limits": {
+    "max_archive_bytes": 33554432,
+    "max_issues": 1000,
+    "max_links": 20000,
+    "max_members": 4096,
+    "max_name_bytes": 1024,
+    "max_total_read_bytes": 16777216,
+    "max_xml_bytes": 2097152,
+    "max_xml_depth": 128,
+    "max_xml_nodes": 100000
+  },
+  "navigation": {
+    "links": [
+      {
+        "fragment": "inicio",
+        "href_sha256": "8e351692b8cfa909d06dd3c58b0dbd9063639959aab8ed760f11591fd7d257cb",
+        "index": 1,
+        "resolution": "resolved",
+        "target": "EPUB/text/inicio.xhtml"
+      },
+      {
+        "fragment": "fim",
+        "href_sha256": "499e052cd6956cc33f7620d6351ac56fdfc7357ddfe84eab0069383cb094b43a",
+        "index": 2,
+        "resolution": "resolved",
+        "target": "EPUB/text/caf\u00e9.xhtml"
+      }
+    ],
+    "path": "EPUB/nav.xhtml",
+    "toc_count": 1
+  },
+  "options": {
+    "include_hrefs": false,
+    "rootfile": null
+  },
+  "package": {
+    "manifest": [
+      {
+        "fallback": null,
+        "href_sha256": "a09f11164f47d1e1d670a4ae7ca375d0ac42d55ce5c4739b83067b0075bc496d",
+        "id": "nav",
+        "media_type": "application/xhtml+xml",
+        "path": "EPUB/nav.xhtml",
+        "properties": [
+          "nav"
+        ],
+        "resolution": "local"
+      },
+      {
+        "fallback": null,
+        "href_sha256": "89ff573006170fc6fadb15cfa83724fbe82412de597a7d3bbc6c1040be7ca190",
+        "id": "intro",
+        "media_type": "application/xhtml+xml",
+        "path": "EPUB/text/inicio.xhtml",
+        "properties": [],
+        "resolution": "local"
+      },
+      {
+        "fallback": null,
+        "href_sha256": "76d58cd86053f2c150e9966b8c41fa7266ef0d08b309df9a5f7c9f5695550180",
+        "id": "final",
+        "media_type": "application/xhtml+xml",
+        "path": "EPUB/text/caf\u00e9.xhtml",
+        "properties": [],
+        "resolution": "local"
+      }
+    ],
+    "nav_path": "EPUB/nav.xhtml",
+    "path": "EPUB/package.opf",
+    "rootfiles": [
+      "EPUB/package.opf"
+    ],
+    "spine": [
+      {
+        "idref": "intro",
+        "index": 1,
+        "linear": true,
+        "media_type": "application/xhtml+xml",
+        "path": "EPUB/text/inicio.xhtml"
+      },
+      {
+        "idref": "final",
+        "index": 2,
+        "linear": true,
+        "media_type": "application/xhtml+xml",
+        "path": "EPUB/text/caf\u00e9.xhtml"
+      }
+    ],
+    "version": "3.0"
+  },
+  "profile": "epub-navigation-audit-v1",
+  "schema_version": 1,
+  "status": "consistent",
+  "summary": {
+    "manifest_items": 3,
+    "nav_links": 2,
+    "resolved_links": 2,
+    "spine_items": 2,
+    "xml_documents": 5,
+    "xml_nodes": 44
+  }
+}

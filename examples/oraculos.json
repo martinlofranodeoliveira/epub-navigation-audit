@@ -1,0 +1,178 @@
+{
+  "epubcheckVersion": "5.3.0",
+  "epubBasis": "EPUB 3.3",
+  "samples": [
+    {
+      "sample": "valido",
+      "epubcheckExit": 0,
+      "fatals": 0,
+      "errors": 0,
+      "warnings": 0,
+      "epubcheckCodes": [],
+      "profileStatus": "consistent",
+      "profileComplete": true,
+      "profileCodes": []
+    },
+    {
+      "sample": "fragmento-ausente",
+      "epubcheckExit": 1,
+      "fatals": 0,
+      "errors": 1,
+      "warnings": 0,
+      "epubcheckCodes": [
+        "RSC-012"
+      ],
+      "profileStatus": "invalid",
+      "profileComplete": true,
+      "profileCodes": [
+        "toc_fragment_missing"
+      ]
+    },
+    {
+      "sample": "arquivo-ausente",
+      "epubcheckExit": 1,
+      "fatals": 0,
+      "errors": 2,
+      "warnings": 0,
+      "epubcheckCodes": [
+        "RSC-001",
+        "RSC-012"
+      ],
+      "profileStatus": "invalid",
+      "profileComplete": false,
+      "profileCodes": [
+        "toc_member_missing",
+        "manifest_member_missing"
+      ]
+    },
+    {
+      "sample": "id-duplicado",
+      "epubcheckExit": 1,
+      "fatals": 0,
+      "errors": 1,
+      "warnings": 0,
+      "epubcheckCodes": [
+        "RSC-005"
+      ],
+      "profileStatus": "invalid",
+      "profileComplete": true,
+      "profileCodes": [
+        "duplicate_id"
+      ]
+    },
+    {
+      "sample": "mimetype-incorreto",
+      "epubcheckExit": 1,
+      "fatals": 0,
+      "errors": 1,
+      "warnings": 0,
+      "epubcheckCodes": [
+        "PKG-007"
+      ],
+      "profileStatus": "invalid",
+      "profileComplete": true,
+      "profileCodes": [
+        "mimetype_content",
+        "mimetype_size"
+      ]
+    },
+    {
+      "sample": "fora-spine",
+      "epubcheckExit": 1,
+      "fatals": 0,
+      "errors": 1,
+      "warnings": 0,
+      "epubcheckCodes": [
+        "RSC-011"
+      ],
+      "profileStatus": "invalid",
+      "profileComplete": false,
+      "profileCodes": [
+        "toc_not_spine"
+      ]
+    },
+    {
+      "sample": "doctype",
+      "epubcheckExit": 0,
+      "fatals": 0,
+      "errors": 0,
+      "warnings": 0,
+      "epubcheckCodes": [],
+      "profileStatus": "incomplete",
+      "profileComplete": false,
+      "profileCodes": [
+        "xml_declaration_unsupported"
+      ]
+    },
+    {
+      "sample": "ordem-diferente",
+      "epubcheckExit": 0,
+      "fatals": 0,
+      "errors": 0,
+      "warnings": 1,
+      "epubcheckCodes": [
+        "NAV-011"
+      ],
+      "profileStatus": "consistent",
+      "profileComplete": true,
+      "profileCodes": [
+        "toc_order"
+      ]
+    },
+    {
+      "sample": "svg",
+      "epubcheckExit": 0,
+      "fatals": 0,
+      "errors": 0,
+      "warnings": 0,
+      "epubcheckCodes": [],
+      "profileStatus": "consistent",
+      "profileComplete": true,
+      "profileCodes": []
+    },
+    {
+      "sample": "multiplas-rendicoes",
+      "epubcheckExit": 0,
+      "fatals": 0,
+      "errors": 0,
+      "warnings": 2,
+      "epubcheckCodes": [
+        "RSC-017",
+        "RSC-019"
+      ],
+      "profileStatus": "incomplete",
+      "profileComplete": false,
+      "profileCodes": [
+        "rootfile_selection_required"
+      ]
+    },
+    {
+      "sample": "unicode-decomposto",
+      "epubcheckExit": 0,
+      "fatals": 0,
+      "errors": 0,
+      "warnings": 0,
+      "epubcheckCodes": [],
+      "profileStatus": "consistent",
+      "profileComplete": true,
+      "profileCodes": []
+    },
+    {
+      "sample": "normalizacao-divergente",
+      "epubcheckExit": 0,
+      "fatals": 0,
+      "errors": 0,
+      "warnings": 0,
+      "epubcheckCodes": [],
+      "profileStatus": "consistent",
+      "profileComplete": true,
+      "profileCodes": []
+    }
+  ],
+  "explicitRenditionSelection": true,
+  "urlOracle": {
+    "cases": 18,
+    "acceptedLocalCompared": 14,
+    "outsideLocalProfile": 4
+  }
+}
