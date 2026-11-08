@@ -531,6 +531,15 @@ def open_snapshot(path, *, limits=AuditLimits(), issues):
                 os.close(descriptor)
             except OSError:
                 pass
+        # Windows refuses opening directories before fstat can classify them.
+        # This fallback affects only the error code; successful opens still
+        # require descriptor-based regular-file validation above.
+        try:
+            regular = stat.S_ISREG(os.stat(raw_path).st_mode)
+        except OSError:
+            regular = True
+        if not regular:
+            raise AuditError('file_not_regular', 'A origem deve ser um arquivo regular.') from None
         raise AuditError('file_unreadable', 'Não foi possível abrir o arquivo de origem.') from None
     archive = None
     try:

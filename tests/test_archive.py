@@ -184,6 +184,24 @@ class ArchiveTests(unittest.TestCase):
         self.assertEqual(caught.exception.code, 'file_unreadable')
         self.assertNotIn('PRIVATE_FAILURE', str(caught.exception))
 
+    def test_refused_open_classifies_only_known_nonregular_sources(self):
+        self.write()
+        for path, expected in ((self.root, 'file_not_regular'), (self.path, 'file_unreadable')):
+            with self.subTest(expected=expected):
+                with patch.object(backend.os, 'open', side_effect=PermissionError('PRIVATE_OPEN')):
+                    with self.assertRaises(AuditError) as caught:
+                        with backend.open_snapshot(path, issues=Issues(10)):
+                            pass
+                self.assertEqual(caught.exception.code, expected)
+                self.assertNotIn('PRIVATE_OPEN', str(caught.exception))
+        with (patch.object(backend.os, 'open', side_effect=PermissionError('PRIVATE_OPEN')),
+              patch.object(backend.os, 'stat', side_effect=PermissionError('PRIVATE_STAT'))):
+            with self.assertRaises(AuditError) as caught:
+                with backend.open_snapshot(self.root, issues=Issues(10)):
+                    pass
+        self.assertEqual(caught.exception.code, 'file_unreadable')
+        self.assertNotIn('PRIVATE', str(caught.exception))
+
     def test_arguments_and_read_limits_are_checked(self):
         for path in (True, None, '\x00'):
             with self.subTest(path=repr(path)), self.assertRaises(ValueError):
@@ -372,12 +390,22 @@ class ArchiveTests(unittest.TestCase):
         self.assertEqual(issues.items, [])
 
     def test_noncanonical_member_paths_are_outside_profile(self):
-        for name in ('../a', '/a', 'a\\b', 'a:b', 'a//b', 'a/./b', 'a/../b'):
+        for name in ('../a', '/a', 'a:b', 'a//b', 'a/./b', 'a/../b'):
             with self.subTest(name=name):
                 self.stops(zip_bytes(((name, b'x'),)), 'zip_path_unsupported', error=False)
         raw = bytearray(zip_bytes((('abc', b'x'),)))
         _, central, _ = positions(raw)
         raw[31] = raw[central + 47] = 0
+        self.stops(raw, 'zip_path_unsupported', error=False)
+
+    def test_backslash_member_name_is_rejected_without_host_normalization(self):
+        # ZipInfo normalizes backslashes on Windows; write the actual ZIP bytes
+        # so this fixture exercises the same member name on every host.
+        raw = bytearray(zip_bytes((('a_b', b'x'),)))
+        _, central, _ = positions(raw)
+        raw[31] = raw[central + 47] = ord('\\')
+        self.assertEqual(raw[30:33], b'a\\b')
+        self.assertEqual(raw[central + 46:central + 49], b'a\\b')
         self.stops(raw, 'zip_path_unsupported', error=False)
 
     def test_duplicate_local_offsets_and_corrupt_local_headers_are_errors(self):
